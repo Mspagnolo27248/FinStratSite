@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-export default function Markets() {
+export default function Today(){
   return (
     <>
 
     <div>
-      Markets
+      Today
      
      
     </div>

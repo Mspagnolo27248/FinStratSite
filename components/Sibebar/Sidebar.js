@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles  from "./Sidebar.module.css";
 import Image from 'next/image';
+import Link from 'next/link';
 import {BsFillBarChartFill}  from 'react-icons/bs';
 import {MdClear,MdArrowForwardIos,MdOutlineSearch} from 'react-icons/md'
+import { useRouter } from "next/router";
+
 export default function Sidebar(props) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
  const logoUrl = props.logoUrl;
   const toggleHandler = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(!isOpen);  
   };
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsOpen(false);
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router]);
   return (
     <>
       <nav className={styles.navbar}>
@@ -20,8 +34,7 @@ export default function Sidebar(props) {
             <li>About</li>
             <li className={styles["dropdown"]}>
             Dropdown
-          <div className={styles["dropdown-content"]}>
-      
+          <div className={styles["dropdown-content"]}>      
             <a href="/">Markets</a>
             <a href="/">Economy</a>
             <a href="/">Academy</a>
@@ -40,16 +53,24 @@ export default function Sidebar(props) {
       <nav className={`${styles["nav-sidebar"]} ${isOpen?styles["open"]:""}`}>
 <div className={styles['sidebar-header']}><BsFillBarChartFill/> Finstrat Trader </div>
   <ul>
-    <li><a href="#">Dashboard <MdArrowForwardIos/></a></li> 
-    <li><a href="#">Markets <MdArrowForwardIos/></a>
+    <li><Link href="/Dashboard">Dashboard <MdArrowForwardIos/></Link></li> 
+    <li><Link href="/Markets">Markets <MdArrowForwardIos/></Link>
     <div className={styles["sidebar-dropdown__content"]}>      
-      <a href="/">Today</a>
-      <a href="/"><MdOutlineSearch size={20}  style={{ height:'21px', width:'21px'}}/><span>Search</span> </a>
-      <a href="/">Historical</a>
+      <Link href="/Markets/Today">Today</Link>
+      <Link href="/Markets/Search"><MdOutlineSearch size={20}  style={{ height:'21px', width:'21px'}}/><span>Search</span> </Link>
+      <Link href="/Markets/History">History</Link>
     </div>
     </li> 
-    <li><a href="#">Economy <MdArrowForwardIos/></a></li>
-    <li><a href="#">Academy <MdArrowForwardIos/></a></li>
+    <li><Link href="/Economy">Economy <MdArrowForwardIos/></Link>
+    <div className={styles["sidebar-dropdown__content"]}>      
+      <Link href="/Economy">Today</Link>
+    </div>
+    </li>
+    <li><Link href="/Academy">Academy <MdArrowForwardIos/></Link>
+    <div className={styles["sidebar-dropdown__content"]}>      
+      <Link href="/Academy">Today</Link>
+    </div>
+    </li>
   </ul>
   <div className={styles["toggler"]} onClick={toggleHandler}><MdClear 
   size={30}
