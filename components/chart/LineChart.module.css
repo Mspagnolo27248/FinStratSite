@@ -1,0 +1,20 @@
+
+    .chartContainer{
+        position: relative; 
+        width:45%;
+        display: inline-block;
+        padding: 10px;
+        
+      }
+      
+      @media (min-width: 200px) and (max-width: 1024px){
+       
+    
+        .chartContainer{
+          position: relative; 
+          width:100%;
+          display: block;
+          padding: 10px;
+          
+        }
+    }

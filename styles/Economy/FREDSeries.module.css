@@ -1,0 +1,48 @@
+.formLabels {   
+    color: #212b26;
+    font-weight: bold;
+    display: block;
+  }
+
+
+  .formContainer{
+    display: flex;    
+   
+    margin-left: 20%;
+ 
+  }
+  .formButton{
+
+    padding: 10px;
+    border: 1px solid gray;
+    background-color:#74dacc;
+    border-radius: 5px;
+    font: inherit;
+    margin-top: 27px;
+  }
+
+  .formInput{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .formControls{
+    padding-right:10px;
+  }
+
+
+    /* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 200px) and (max-width: 1024px){
+.formLabels {
+  
+  color: whitesmoke;
+  font-weight: bold;
+  display: block;
+}
+
+}

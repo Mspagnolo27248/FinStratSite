@@ -35,9 +35,9 @@ export default function Sidebar(props) {
             <li className={styles["dropdown"]}>
             Dropdown
           <div className={styles["dropdown-content"]}>      
-            <a href="/">Markets</a>
-            <a href="/">Economy</a>
-            <a href="/">Academy</a>
+            <Link href="/">Markets</Link>
+            <Link href="/">Economy</Link>
+            <Link href="/">Academy</Link>
           </div>
         </li>
           </ul>
@@ -63,12 +63,14 @@ export default function Sidebar(props) {
     </li> 
     <li><Link href="/Economy">Economy <MdArrowForwardIos/></Link>
     <div className={styles["sidebar-dropdown__content"]}>      
-      <Link href="/Economy">Today</Link>
+      <Link href="/Economy">Snapshot</Link>
+      <Link href="/Economy/FREDSeries">FRED Series</Link>
     </div>
     </li>
     <li><Link href="/Academy">Academy <MdArrowForwardIos/></Link>
     <div className={styles["sidebar-dropdown__content"]}>      
       <Link href="/Academy">Today</Link>
+      <Link href="/Academy/FREDSeries">Today</Link>
     </div>
     </li>
   </ul>
