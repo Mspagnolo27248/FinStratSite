@@ -30,8 +30,6 @@ export default function LineChartLarge(props) {
 
 
   return (
-    <div className={classes.chartContainer}>
     <Line  data={props.chartData}  options={props.chartOptions} />
-    </div>
-  )
+)
 }
