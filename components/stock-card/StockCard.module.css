@@ -1,0 +1,70 @@
+.card-container{
+    box-sizing: border-box;
+    height: 90px;
+    /* background-color: rgba(240, 240, 240, 0.849); */
+    background-color: rgba(36, 32, 32, 0.541);
+    display: flex;
+    min-width: 75px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.color-bar{   
+    width: 8px;
+    height: 100%;
+    margin-right: .5rem;
+}
+
+.info-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.delta-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-box,.price-box{
+    color: rgb(4, 4, 163);
+    font-size: 1rem;
+    font-weight: bold;
+   
+ 
+}
+
+.delta-container{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.volume{
+    color: rgb(85, 85, 238);
+}
+
+.gradient-text {
+    /* background: linear-gradient(to top, rgb(4, 4, 163), rgb(109, 131, 231)); */
+    background: linear-gradient(to top, rgb(255, 255, 255), rgb(61, 61, 68));
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .positive-font-color{
+    color:green;
+  }
+
+  .negative-font-color{
+    color:red;
+  }
+
+  .positive-background-color{
+    background-color:green;
+
+  }
+  
+  .negative-background-color{
+    background-color:red;
+
+  }

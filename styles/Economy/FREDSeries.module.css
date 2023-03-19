@@ -65,7 +65,7 @@ align-items: center;
     margin: 1rem 10%;
     border: 1px solid gray;
     background-color:#74dacc;
-    border-radius: 5px;
+    border-radius: 50px;
     font: inherit;
     font-weight: bold;
 
@@ -150,7 +150,7 @@ and (orientation: landscape) {
     margin: 0;
     border: 1px solid gray;
     background-color:#74dacc;
-    border-radius: 5px;
+    border-radius: 50px;
     font: inherit;
     font-weight: bold;
     height:  28px;
