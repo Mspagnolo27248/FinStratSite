@@ -20,7 +20,14 @@ var yahooFinance = require('yahoo-finance');
             break;
           case 'POST':
             // Handle POST request
-            res.status(200).json({ message: 'Handling POST request' });
+            // res.status(200).json({ message: 'Handling POST request' });
+            const bodyObject = JSON.parse(req.body);
+            const symbol = bodyObject.symbol;
+            await yahooFinance.quote({
+              symbol: symbol,
+              modules: [ 'price', 'summaryDetail' ] // see the docs for the full list
+            })
+            .then((data) =>   res.send(data));
             break;
           case 'PUT':
             // Handle PUT request
