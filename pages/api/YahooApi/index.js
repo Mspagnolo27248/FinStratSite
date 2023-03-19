@@ -8,13 +8,15 @@ var yahooFinance = require('yahoo-finance');
         switch (method) {
           case 'GET':
             // Handle GET request
-          const data =  await  yahooFinance.quote({
-                symbol: 'AAPL',
+            await yahooFinance.quote({
+                symbol: 'WMT',
                 modules: [ 'price', 'summaryDetail' ] // see the docs for the full list
-              }, function (err, quotes) {
-                // ...
-              });
-            res.status(200).json({ message: 'Handling GET request',data:data });
+              })
+              .then((data) =>   res.send(data));
+        
+      
+
+
             break;
           case 'POST':
             // Handle POST request

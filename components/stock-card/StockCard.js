@@ -9,16 +9,16 @@ export default function StockCard(props) {
 
   return (
     <div className={styles["card-container"]}>
-      <div className={`${styles["color-bar"]} ${backgroundColorClassName}`}></div>
+      <div className={`${styles["color-bar"]} ${backgroundColorClassName}`}/>
       <div className={styles["info-container"]}>
         <div className={`${styles["name-box"]} ${styles["gradient-text"]}`}>{itemName}</div>
         <div className={`${styles["price-box"]} ${styles["gradient-text"]}`}>{itemPrice}</div>
         <div className={`${styles["delta-container"]} ${fontColorClassName}`}>
-          <div className={styles["price-delta"]}>{isPositive?`+${priceDelta}`:`-${priceDelta}`}</div>
-          <div className={styles["percent-delta"]}>{isPositive?`[+${percentDelta}]`:`[-${percentDelta}]`}</div>
+          <div className={styles["price-delta"]}>{isPositive?`+${priceDelta}`:`${priceDelta}`}</div>
+          <div className={styles["percent-delta"]}>{isPositive?`[+${percentDelta}]`:`[${percentDelta}]`}</div>
         </div>
         <div className={`${styles["volume"]} ${styles["gradient-text"]}`}>
-          VOL: <b>{volume}</b>
+          VOL: <b>{volume.toLocaleString("en-US")}</b>
         </div>
       </div>
     </div>
