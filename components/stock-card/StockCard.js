@@ -15,7 +15,7 @@ export default function StockCard(props) {
         <div className={`${styles["price-box"]} ${styles["gradient-text"]}`}>{itemPrice}</div>
         <div className={`${styles["delta-container"]} ${fontColorClassName}`}>
           <div className={styles["price-delta"]}>{isPositive?`+${priceDelta}`:`${priceDelta}`}</div>
-          <div className={styles["percent-delta"]}>{isPositive?`[+${percentDelta}]`:`[${percentDelta}]`}</div>
+          <div className={styles["percent-delta"]}>{isPositive?`[+${percentDelta}%]`:`[${percentDelta}%]`}</div>
         </div>
         <div className={`${styles["volume"]} ${styles["gradient-text"]}`}>
           VOL: <b>{volume.toLocaleString("en-US")}</b>

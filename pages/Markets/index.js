@@ -3,17 +3,17 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import StockCard from '../../components/stock-card/StockCard'
-
+import styles from '../../styles/Markets/index.module.css'
 
 export default  function Markets() {
 
-  const SYMBOLS = ['SPY','DOW','QQQ',"GLD","TLT"]
+  const SYMBOLS = ['SPY','DOW','QQQ',"VXZ","SHY","IEF","TLT","GLD",]
  
 
 const [cardData,setCardData] = useState([{
   isPositive:0,
   itemName:"None",
-  itemPrice:"0.0",
+  itemPrice:"",
   priceDelta:"0.00",
   percentDelta: "0.0%",
   volume:"0"
@@ -32,9 +32,9 @@ SYMBOLS.map(item=>{
       isPositive:data.price.regularMarketChange>0,
       itemName:data.price.shortName,
       itemPrice:data.price.regularMarketPrice,
-      priceDelta:(data.price.regularMarketChange).toFixed(2),
+      priceDelta:(data.price.regularMarketChange||0).toFixed(2),
       percentDelta:(data.price.regularMarketChangePercent*100).toFixed(2),
-      volume:data.price.regularMarketVolume
+      volume:data.price.regularMarketVolume||0
     }]
     );
   })
@@ -56,13 +56,15 @@ SYMBOLS.map(item=>{
   //   percentDelta:"0.49%",
   //   volume:"992,137,871"
   // }
+    
+    
 
 
   return (
     <>
-    <div><h1>Markets</h1></div>
-    {cardData.map(item=>{
-      return <StockCard {...item}/>
+    <div className={styles['heading-container']}><h2 className={styles['heading-title']}>Markets Overview</h2></div>
+    {cardData.map((item,idx)=>{
+      return item.itemPrice !=""&&<StockCard key={idx} {...item}/>
     })}
    
     </>

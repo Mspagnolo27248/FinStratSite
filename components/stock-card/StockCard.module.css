@@ -7,7 +7,8 @@
     min-width: 75px;
     max-width: 400px;
     margin: auto;
-    margin-bottom: 1rem;;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .color-bar{   
@@ -19,18 +20,21 @@
 .info-container{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .delta-container{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 .name-box,.price-box{
     color: rgb(4, 4, 163);
     font-size: 1rem;
     font-weight: bold;
+    width: 100%;
    
  
 }
@@ -38,6 +42,7 @@
 .delta-container{
     font-size: 1rem;
     font-weight: bold;
+    width: 40%;
 }
 .volume{
     color: rgb(85, 85, 238);
