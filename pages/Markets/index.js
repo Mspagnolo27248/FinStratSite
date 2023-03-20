@@ -7,7 +7,7 @@ import StockCard from '../../components/stock-card/StockCard'
 
 export default  function Markets() {
 
-  const SYMBOLS = ['SPY','QQQ']
+  const SYMBOLS = ['SPY','DOW','QQQ',"GLD","TLT"]
  
 
 const [cardData,setCardData] = useState([{
