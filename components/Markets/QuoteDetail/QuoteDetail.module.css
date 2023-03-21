@@ -1,0 +1,82 @@
+.main-container {
+    --positive-font-color: green;
+    --negative-font-color: red;
+    width: 80%;
+    color: white;
+    background-color: black;
+  margin: auto;
+  }
+
+  .top-box {
+    margin-top: 2rem;
+  
+  }
+  .stock-name{
+      font-size: 1.7rem;
+  }
+  .price {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .price-delta {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+  .percent-delta {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+  }
+
+  .flex-row {
+    display: flex;
+  }
+
+  .positive-color {
+    color: var(--positive-font-color);
+  }
+
+  .negative-color {
+    color: var(--negative-font-color);
+  }
+
+  .chart-box{
+      font-size:50px;
+      margin-top: 1rem;
+      text-align: center;
+  }
+
+  .statistics-box{
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      margin: auto;
+  }
+
+  .statistics-item{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: .5rem;
+  }
+
+  .statistics-item span{
+     margin-left: 1rem;
+     margin-right: 1rem;
+  }
+
+  .item-name{
+      font-weight: 400;
+      color: grey;
+
+  }
+
+  .item-value{
+      font-weight: bold;
+  }
