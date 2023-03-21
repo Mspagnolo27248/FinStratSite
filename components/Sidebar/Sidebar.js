@@ -10,10 +10,22 @@ import { useRouter } from "next/router";
 export default function Sidebar(props) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  
   const [marketsIsOpen,setMarketsIsOpen] = useState(false);
   const marketClickHandler = () =>{
     setMarketsIsOpen(!marketsIsOpen)
-  }
+  };
+
+const [economyIsOpen,setEconomyIsOpen] = useState(false);
+const economyClickHandler = () =>{
+  setEconomyIsOpen(!economyIsOpen)
+};
+
+const [academyIsOpen,setAcademyIsOpen] = useState(false);
+const academyClickHandler = () =>{
+  setAcademyIsOpen(!academyIsOpen)
+};
+
  const logoUrl = props.logoUrl;
   const toggleHandler = () => {
     setIsOpen(!isOpen);  
@@ -66,17 +78,20 @@ export default function Sidebar(props) {
       <Link href="/Markets/History" onClick={marketClickHandler}>History</Link>
     </div>}
     </li> 
-    <li><Link href="#" className={styles['page-link']}>Economy <SlArrowDown/></Link>
-    <div className={styles["sidebar-dropdown__content"]}>      
-      <Link href="/Economy">Snapshot</Link>
-      <Link href="/Economy/FREDSeries">FRED Series</Link>
-    </div>
+    <li><div  onClick={economyClickHandler} className={styles['page-link']}>Economy <SlArrowDown/></div>
+    {economyIsOpen&& <div className={styles["sidebar-dropdown__content"]}>      
+      <Link href="/Economy" onClick={economyClickHandler}>Overview</Link>
+      <Link href="/Economy/FREDSeries" onClick={economyClickHandler}>Series St. Louis FRED API</Link>
+      <Link href="/Economy/FREDSeries" onClick={economyClickHandler}>GDP Data</Link>
+      <Link href="/Economy/FREDSeries" onClick={economyClickHandler}>Inflation Data</Link>
+      <Link href="/Economy/FREDSeries" onClick={economyClickHandler}>Employment Data</Link>
+    </div>}
     </li>
-    <li><Link href="#" className={styles['page-link']}>Academy <SlArrowDown/></Link>
-    <div className={styles["sidebar-dropdown__content"]}>      
-      <Link href="/Academy">Today</Link>
-      <Link href="/Academy/FREDSeries">Today</Link>
-    </div>
+    <li><div onClick={academyClickHandler} className={styles['page-link']}>Academy <SlArrowDown/></div>
+    {academyIsOpen&&<div className={styles["sidebar-dropdown__content"]}>      
+      <Link href="/Academy" onClick={academyClickHandler}>Future Value</Link>
+      <Link href="/Academy/FREDSeries" onClick={academyClickHandler}>Present Value</Link>
+    </div>}
     </li>
   </ul>
   <div className={styles["toggler"]} onClick={toggleHandler}><MdClear 

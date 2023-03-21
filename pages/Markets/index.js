@@ -19,31 +19,47 @@ const [cardData,setCardData] = useState([{
   volume:"0"
 }]);
 
-
-useEffect(()=>{
-SYMBOLS.map(item=>{
-  fetch('http://localhost:3000/api/YahooApi',
-  {method: 'POST', 
-  body:JSON.stringify({symbol:item})
-  })
-  .then(res => res.json())
-  .then((data)=>{
-    setCardData(prevArray => [...prevArray, {
-      isPositive:data.price.regularMarketChange>0,
-      itemName:data.price.shortName,
-      itemPrice:data.price.regularMarketPrice,
-      priceDelta:(data.price.regularMarketChange||0).toFixed(2),
-      percentDelta:(data.price.regularMarketChangePercent*100).toFixed(2),
-      volume:data.price.regularMarketVolume||0
-    }]
-    );
-  })
-
-})
+useEffect(() => {
+  const fetchData = async () => {
+    const data = await Promise.all(SYMBOLS.map(item => fetch('http://localhost:3000/api/YahooApi', {
+      method: 'POST',
+      body: JSON.stringify({ symbol: item })
+    }).then(res => res.json())));
+    setCardData(data.map((item, index) => ({
+      isPositive: item.price.regularMarketChange > 0,
+      itemName: item.price.shortName,
+      itemPrice: item.price.regularMarketPrice,
+      priceDelta: (item.price.regularMarketChange || 0).toFixed(2),
+      percentDelta: (item.price.regularMarketChangePercent * 100).toFixed(2),
+      volume: item.price.regularMarketVolume || 0,
+      index: index,
+    })).sort((a, b) => a.index - b.index));
+  };
+  fetchData();
+}, []);
 
 
-  
-},[]);
+// useEffect(()=>{
+// SYMBOLS.map(item=>{
+//   fetch('http://localhost:3000/api/YahooApi',
+//   {method: 'POST', 
+//   body:JSON.stringify({symbol:item})
+//   })
+//   .then(res => res.json())
+//   .then((data)=>{
+//     setCardData(prevArray => [...prevArray, {
+//       isPositive:data.price.regularMarketChange>0,
+//       itemName:data.price.shortName,
+//       itemPrice:data.price.regularMarketPrice,
+//       priceDelta:(data.price.regularMarketChange||0).toFixed(2),
+//       percentDelta:(data.price.regularMarketChangePercent*100).toFixed(2),
+//       volume:data.price.regularMarketVolume||0
+//     }]
+//     );
+//   })
+
+// })  
+// },[]);
 
 
 
