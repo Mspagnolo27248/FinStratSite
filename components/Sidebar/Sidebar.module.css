@@ -161,7 +161,7 @@ color: blue;
         border-bottom: 1px solid #666;
       }
 
-      .nav-sidebar li>a {
+      .page-link {
        text-decoration: none;
        color: white;
        display: flex;
@@ -171,16 +171,14 @@ color: blue;
       }
 
       .sidebar-dropdown__content{
-         display: none;
+         display: flex;
          flex-direction: column;
          font-weight: 300;
          font-size:  1rem;
          margin-left: 4.5rem;
         
       }
-      .nav-sidebar li:hover .sidebar-dropdown__content{
-         display: flex;       
-      }
+     
       
       .nav-sidebar li:last-child {
         border-bottom: none;

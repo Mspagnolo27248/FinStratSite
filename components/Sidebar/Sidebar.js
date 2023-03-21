@@ -4,11 +4,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {BsFillBarChartFill}  from 'react-icons/bs';
 import {MdClear,MdArrowForwardIos,MdOutlineSearch} from 'react-icons/md'
+import {SlArrowDown} from 'react-icons/sl'
 import { useRouter } from "next/router";
-
+//<MdOutlineSearch size={20}  style={{ height:'21px', width:'21px'}}/>
 export default function Sidebar(props) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [marketsIsOpen,setMarketsIsOpen] = useState(false);
+  const marketClickHandler = () =>{
+    setMarketsIsOpen(!marketsIsOpen)
+  }
  const logoUrl = props.logoUrl;
   const toggleHandler = () => {
     setIsOpen(!isOpen);  
@@ -53,21 +58,21 @@ export default function Sidebar(props) {
       <nav className={`${styles["nav-sidebar"]} ${isOpen?styles["open"]:""}`}>
 <div className={styles['sidebar-header']}><BsFillBarChartFill/> Finstrat Trader </div>
   <ul>
-    <li><Link href="/Dashboard">Dashboard <MdArrowForwardIos/></Link></li> 
-    <li><Link href="/Markets">Markets <MdArrowForwardIos/></Link>
-    <div className={styles["sidebar-dropdown__content"]}>      
-      <Link href="/Markets/Today">Today</Link>
-      <Link href="/Markets/Search"><MdOutlineSearch size={20}  style={{ height:'21px', width:'21px'}}/><span>Search</span> </Link>
-      <Link href="/Markets/History">History</Link>
-    </div>
+    <li><Link href="#" className={styles['page-link']}>Dashboard <SlArrowDown/></Link></li> 
+    <li><div  onClick={marketClickHandler} className={styles['page-link']}>Markets <SlArrowDown/></div>
+    {marketsIsOpen&&<div className={styles["sidebar-dropdown__content"]}>      
+      <Link href="/Markets" onClick={marketClickHandler}>Overview</Link>
+      <Link href="/Markets/Search" onClick={marketClickHandler}><span>Search</span> </Link>
+      <Link href="/Markets/History" onClick={marketClickHandler}>History</Link>
+    </div>}
     </li> 
-    <li><Link href="/Economy">Economy <MdArrowForwardIos/></Link>
+    <li><Link href="#" className={styles['page-link']}>Economy <SlArrowDown/></Link>
     <div className={styles["sidebar-dropdown__content"]}>      
       <Link href="/Economy">Snapshot</Link>
       <Link href="/Economy/FREDSeries">FRED Series</Link>
     </div>
     </li>
-    <li><Link href="/Academy">Academy <MdArrowForwardIos/></Link>
+    <li><Link href="#" className={styles['page-link']}>Academy <SlArrowDown/></Link>
     <div className={styles["sidebar-dropdown__content"]}>      
       <Link href="/Academy">Today</Link>
       <Link href="/Academy/FREDSeries">Today</Link>
