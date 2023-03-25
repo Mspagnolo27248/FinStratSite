@@ -21,7 +21,7 @@ const [cardData,setCardData] = useState([{
 
 useEffect(() => {
   const fetchData = async () => {
-    const data = await Promise.all(SYMBOLS.map(item => fetch('http://localhost:3000/api/YahooApi', {
+    const data = await Promise.all(SYMBOLS.map(item => fetch('/api/YahooApi', {
       method: 'POST',
       body: JSON.stringify({ symbol: item })
     }).then(res => res.json())));
