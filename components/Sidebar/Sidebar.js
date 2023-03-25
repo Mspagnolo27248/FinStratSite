@@ -33,6 +33,9 @@ const academyClickHandler = () =>{
 
   useEffect(() => {
     const handleRouteChange = () => {
+      setAcademyIsOpen(false);
+      setEconomyIsOpen(false);
+      setMarketsIsOpen(false);
       setIsOpen(false);
     };
     router.events.on('routeChangeStart', handleRouteChange);

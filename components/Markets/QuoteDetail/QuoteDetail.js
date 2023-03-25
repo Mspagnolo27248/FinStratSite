@@ -79,7 +79,7 @@ if(apiData.price){
           <div>{quoteTime}</div>
         </div>
 
-        <div className={styles["chart-box"]}>This is a Chart</div>
+        <div className={styles["chart-box"]}>{props.children}</div>
 
         <div className={styles["statistics-box"]}>
           <h2>Key Statistics</h2>
