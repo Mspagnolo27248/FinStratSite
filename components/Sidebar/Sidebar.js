@@ -52,14 +52,24 @@ export default function Sidebar(props) {
         <div className={styles["navbar-links"]}>
           <ul>
             <li>Home</li>
-            <li>Details</li>
-            <li>About</li>
+            <li>Academy</li>
             <li className={styles["dropdown"]}>
-              Dropdown
+            Markets
+            <div className={styles["dropdown-content"]}>
+                <Link href="/Markets">Overview</Link>
+                <Link href="/Markets/Search">Search</Link>
+                <Link href="/Markets/History">History</Link>
+               
+              </div>
+            </li>
+            <li className={styles["dropdown"]}>
+              Economy
               <div className={styles["dropdown-content"]}>
-                <Link href="/">Markets</Link>
-                <Link href="/">Economy</Link>
-                <Link href="/">Academy</Link>
+                <Link href="/Economy/FREDSeries">FRED API</Link>
+                <Link href="/Economy/Employment">Employment</Link>
+                <Link href="/Economy/GDP">GDP</Link>
+                <Link href="/Economy/InterestRates">Interest Rates</Link>
+                <Link href="/Economy/Inflation">Inflation</Link>
               </div>
             </li>
           </ul>

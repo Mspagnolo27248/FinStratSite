@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect,useState } from 'react'
-import {GetTestData} from '../../Utilities/fs_wrapper'
+import {GetJsonFromFile, GetTestData} from '../../Utilities/fs_wrapper'
 import {SetChartOptions} from '../../Utilities/chart-js-wrapper'
 import { SetChartData } from '../../Utilities/chart-js-wrapper'
 import LineChart from '../../components/chart/LineChart';
@@ -35,6 +35,12 @@ props.tenYear.observations.map((item)=>item.date),
 '%'
 )
 
+const TwoYearChartOptions = SetChartOptions('2 Year Treasury')
+const TwoYearChartData =  SetChartData(
+props.twoYear.observations.map((item)=>item.value),
+props.twoYear.observations.map((item)=>item.date),
+'%'
+)
 
 const BreakEvenChartOptions = SetChartOptions('10year Breakevens (Inflation Expectations)')
 const BreakevenChartData =  SetChartData(
@@ -85,12 +91,17 @@ const TenMinusTwosChartData = {
     <Fragment>
     <div>    
     <LineChart chartData={TenYearChartData} chartOptions={TenYearChartOptions}/>  
-    <LineChart chartData={TenMinusTwosChartData} chartOptions={TenMinusTwosChartOptions}/>
+    <LineChart chartData={TwoYearChartData} chartOptions={TwoYearChartOptions}/>
     </div>
 
     <div>    
-    <LineChart chartData={BreakevenChartData} chartOptions={BreakEvenChartOptions}/> 
+    <LineChart chartData={TenMinusTwosChartData} chartOptions={TenMinusTwosChartOptions}/>
     <LineChart chartData={FedFundsChartData} chartOptions={FedFundsChartOptions}/>
+    </div>
+
+    <div>
+    <LineChart chartData={BreakevenChartData} chartOptions={BreakEvenChartOptions}/> 
+    <LineChart chartData={mortgaeChartData} chartOptions={mortgageChartOptions}/> 
     </div>
  
     </Fragment>
@@ -98,18 +109,19 @@ const TenMinusTwosChartData = {
 }
 
 export async function getServerSideProps(){
-    const fredCodes = GetTestData('FRED-series.json');
-    const fredCodes2 = GetTestData('FREDSeries.json');
+  const fredCodes = GetJsonFromFile("content/data", "FREDSeries.json");
+
     const now = new Date().toISOString().substring(0,10);
     const start_date = '2015-10-01';
     const end_date =    new Date().toISOString().split('T')[0];
   
-    const tenYear =  await FetchSeriesObservationData(fredCodes.TenYearTreasury,start_date,end_date);
-    const tensMinusTwos = await FetchSeriesObservationData(fredCodes.IntrestRatesTensLessTwos,start_date,end_date);
-    const fedFunds = await FetchSeriesObservationData(fredCodes.FedFunds,start_date,end_date);
-    const breakevens = await FetchSeriesObservationData(fredCodes.TenYearBreakEven,start_date,end_date);
-    const fedFundsTarget = await FetchSeriesObservationData(fredCodes.FedFundsUpperTarget,start_date,end_date);
-    const mortgageRate = await FetchSeriesObservationData(fredCodes2.MortgageRate.series,start_date,end_date);
+    const tenYear =  await FetchSeriesObservationData(fredCodes.TenYearTreasury.series,start_date,end_date);
+    const twoYear =  await FetchSeriesObservationData(fredCodes.TwoYearTreasury.series,start_date,end_date);
+    const tensMinusTwos = await FetchSeriesObservationData(fredCodes.TensMinusTwosTreasury.series,start_date,end_date);
+    const fedFunds = await FetchSeriesObservationData(fredCodes.FedFunds.series,start_date,end_date);
+    const breakevens = await FetchSeriesObservationData(fredCodes.TenYearBreakEven.series,start_date,end_date);
+    const fedFundsTarget = await FetchSeriesObservationData(fredCodes.FedFundsUpperTarget.series,start_date,end_date);
+    const mortgageRate = await FetchSeriesObservationData(fredCodes.MortgageRate.series,start_date,end_date);
 
    
         return{
@@ -120,6 +132,7 @@ export async function getServerSideProps(){
                 fedFunds:fedFunds,
                 breakevens:breakevens,
                 mortgageRate:mortgageRate,
+                twoYear:twoYear,
                 
             }
         }

@@ -56,14 +56,27 @@ color: blue;
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #333;
+    background-color: transparent;
     z-index: 1;
+    flex-direction: column;
+    color: white;
+    font-size: .8rem; 
   }
   
   .dropdown:hover .dropdown-content {
-    display: block;
+    display: flex;
+
   }
 
+  .dropdown-content>a {
+   padding-bottom: .5rem;
+
+  }
+
+  .dropdown-content>a:hover {
+ color: blue;
+   
+  }
 
  .navbar-toggle{
     position: absolute;
@@ -175,9 +188,11 @@ color: blue;
        display: flex;
        justify-content: space-between;
        margin: 0 2rem;
-       font-weight: 300;
+       font-weight: bold;
       }
-
+      .sidebar-dropdown__content a{
+         font-weight: 400;
+      }
       .sidebar-dropdown__content{
          display: flex;
          flex-direction: column;

@@ -7,9 +7,12 @@
 
 .page{
   --label-color:white;
-  --input-bg-color:#414141;
-  --input-color:white;
- --input-outline-color:#94fdfd;
+  --input-bg-color:#ffffff;
+  --input-color:rgb(39, 38, 38);
+ --input-outline-color:#080808;
+ --btn-bg-color:blue;
+ --btn-color:white;
+ --btn-border-color:blue ;
  width: 100%
 
 }
@@ -63,11 +66,12 @@ align-items: center;
     padding: 10px 10px;
     width: 80%;
     margin: 1rem 10%;
-    border: 1px solid gray;
-    background-color:#74dacc;
+    border: 1px solid var(--btn-border-color);
+    background-color:var(--btn-bg-color);
     border-radius: 50px;
     font: inherit;
     font-weight: bold;
+    color: var(--btn-color);
 
   }
 
