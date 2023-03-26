@@ -52,7 +52,17 @@ export default function Sidebar(props) {
         <div className={styles["navbar-links"]}>
           <ul>
             <li>Home</li>
-            <li>Academy</li>
+            <li className={styles["dropdown"]}>
+              Academy
+              <div className={styles["dropdown-content"]}>
+                <Link href="/Academy">Overview</Link>
+                <Link href="/Academy/FutureValue">Future Value</Link>
+                <Link href="/Academy/PresentValue">Present Value</Link>
+                <Link href="/Academy/FVAnnuityPmt">Annuity Payments</Link>
+                <Link href="/Academy/LoanPmt">Loan Payments</Link>
+          
+              </div>
+            </li>
             <li className={styles["dropdown"]}>
             Markets
             <div className={styles["dropdown-content"]}>
@@ -152,11 +162,17 @@ export default function Sidebar(props) {
             </div>
             {academyIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>
-                <Link href="/Academy" onClick={academyClickHandler}>
+                <Link href="/Academy/FutureValue" onClick={academyClickHandler}>
                   Future Value
                 </Link>
-                <Link href="/Academy/FREDSeries" onClick={academyClickHandler}>
+                <Link href="/Academy/PresentValue" onClick={academyClickHandler}>
                   Present Value
+                </Link>
+                <Link href="/Academy/LoanPmt" onClick={academyClickHandler}>
+                  Loan Payment
+                </Link>
+                <Link href="/Academy/FVAnnuityPmt" onClick={academyClickHandler}>
+                  FV Annuity Payment
                 </Link>
               </div>
             )}

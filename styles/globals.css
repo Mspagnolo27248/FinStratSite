@@ -46,11 +46,12 @@ body{
 
 .fin-div {
 
-  width: 50%;
+  width: 60%;
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 600px;margin-left: 25%;
+  height: 600px;
+  margin-left: 20%;
   padding: 20px;
   margin-top: 50px;
   /* width: 320px; */

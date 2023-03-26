@@ -1,8 +1,8 @@
 
 import { useState } from "react";
-import Field from "../Field/Field"
+import Field from "../Field/Field";
 
-function FutureValueForm(){
+function LoanPaymentForm(){
 
   const [calcSolution,setCalcSolution] =useState("")
   const [params ,setParams] = useState({
@@ -20,8 +20,8 @@ function FutureValueForm(){
     }));
   } 
 
-function handleClick(e){     
-     const result = fv(params.rate,params.pv,params.nper)
+ function handleClick(e){     
+     const result = pmt(params.rate,params.pv,params.nper)
      setCalcSolution(result)     
   }
 
@@ -30,30 +30,29 @@ function handleClick(e){
     currency: 'USD', 
   });
 
-  function fv(rate,pv,nper){
+  function pmt(rate,pv,nper){
      const _pv = parseFloat(pv.replace(/\$|,/g, ''))
-     const _rate = parseFloat(rate)
+     const _rate = parseFloat(rate)/12
      const _nper = parseFloat(nper)
-     var _fv = _pv*((1+_rate)**_nper)
-     return _fv
+     var _pmt = (_pv*(_rate))/(1-(1+_rate)**-_nper)
+     return _pmt
     }
 
-
     return(
-        <div className="fin-div">
-        <div className="title">Future Value Calculator</div>
+        <div class="fin-div">
+        <div class="title">Loan Payment Calculator</div>
         <form  >          
 
         <Field name ="pv" desc="Present Value" handleChange = {handleChange}/>
         <Field name="rate" desc="Rate" handleChange = {handleChange}/>          
         <Field name ="nper" desc="Periods" handleChange = {handleChange} />
-        <Field name ="fv" desc="Future Value" value = {formatter.format(calcSolution)} readonly/>
-
+        <Field name ="pmt" desc="Loan Payment" value = {formatter.format(calcSolution)} readonly/>
+      
         <div >
-          <h3 className="result">FV: = {formatter.format(calcSolution)}</h3>
+          <h3 class="result">PMT: = {formatter.format(calcSolution)}</h3>
         </div>
      
-        <button type="button" className="submit" onClick={handleClick}>Calculate</button>
+        <button type="button" class="submit" onClick={handleClick}>Calculate</button>
       
         </form>
 
@@ -62,4 +61,4 @@ function handleClick(e){
 
 }
 
-export default FutureValueForm;
+export default LoanPaymentForm;

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import FutureValueForm from '../../components/Academy/FutureValueForm/FutureValueForm'
+import PresentValueForm from '../../components/Academy/PresentValueForm/PresentValueForm'
 
 
 export default function FutureValue() {
@@ -8,7 +8,7 @@ export default function FutureValue() {
     <>
 
     <div>Future Value</div>
-    <FutureValueForm/>
+    <PresentValueForm/>
     </>
 
    
