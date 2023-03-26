@@ -46,13 +46,14 @@ align-items: center;
     /* color: #fdfffe; */
     font-weight: bold;
     font-size: 1.1rem;
+    display: block;
   }
 
   .form-input{
     width: 100%;
     padding: .5rem 1rem;
     margin: 8px 0;
-    display: inline-block;
+    display: block;
     border-radius: 4px;
     font: inherit;
     background-color:var(--input-bg-color);
