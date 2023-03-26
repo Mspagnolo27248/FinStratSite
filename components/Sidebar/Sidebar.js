@@ -66,6 +66,7 @@ export default function Sidebar(props) {
               Economy
               <div className={styles["dropdown-content"]}>
                 <Link href="/Economy/FREDSeries">FRED API</Link>
+                <Link href="/Economy/Series">Series</Link>
                 <Link href="/Economy/Employment">Employment</Link>
                 <Link href="/Economy/GDP">GDP</Link>
                 <Link href="/Economy/InterestRates">Interest Rates</Link>
@@ -123,6 +124,9 @@ export default function Sidebar(props) {
                 </Link>
                 <Link href="/Economy/FREDSeries" onClick={economyClickHandler}>
                   Series St. Louis FRED API
+                </Link>
+                <Link href="/Economy/Series" onClick={economyClickHandler}>
+                  Series Data
                 </Link>
                 <Link href="/Economy/Employment" onClick={economyClickHandler}>
                   Employment Data
