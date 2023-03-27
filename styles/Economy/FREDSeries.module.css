@@ -91,9 +91,10 @@ and (orientation: landscape) {
 
   .chart-container{
     position: fixed;
-    top:20%;
+    top:15%;
     right: 0;  
     width: 70%;
+    z-index: 2;
 
   }
   
@@ -102,16 +103,17 @@ and (orientation: landscape) {
       display: flex;
       flex-direction: column;   
       position: fixed;
-      top: 30%;
+      top: 25%;
       left: 0;
       margin:0;
       padding-left: 1rem;
-
+      width: 30%;
       
      }
 
      .form-control{
-
+    
+      width: 100%;
     
 
     }
