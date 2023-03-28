@@ -1,0 +1,62 @@
+
+
+  .input-group{
+    background-color: var(--container-inputs-bg);
+    padding: 2rem;
+    max-width: 60%;
+    min-width: 25%;
+    margin:auto ;
+
+    --btn-border-color: rgba(0, 174, 255, 0.849);
+    --container-inputs-bg: rgb(255, 255, 255);
+
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.input-container {
+  background-color: var(--container-inputs-bg);
+  padding: .5rem;
+  border: 2px solid rgba(0, 0, 0, 0.479);
+  margin:  1rem;
+  border-radius: 5px;
+  position: relative;
+
+}
+
+
+.input-box {
+    background-color: var(--container-inputs-bg);
+    border: none;
+    line-height: 1rem;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  .input-label {
+    position: absolute;   
+    left: 18px;
+    top: -12px;
+    padding: 0 2px;
+    background-color: var(--container-inputs-bg);
+    font-size: .9rem;
+    z-index: 101;
+    border-radius: 1rem;
+    color: rgba(0, 0, 0, 0.479);
+    font-weight: 200;
+  }
+
+  /* Target the parent element when the child element is in focus */
+.input-container:focus-within { 
+    border: 2px solid ;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.input-box:focus + .input-label {
+color: #88bde9;
+text-shadow : horizontal-shadow vertical-shadow blur color;
+}
+

@@ -24,8 +24,8 @@ var yahooFinance = require('yahoo-finance');
             // Handle POST request
             const bodyObject = JSON.parse(req.body);
             const symbol = bodyObject.symbol;
-            const startDate = bodyObject.startDate;
-            const endDate = bodyObject.endDate;
+            const startDate = bodyObject.from;
+            const endDate = bodyObject.to;
        
             await yahooFinance.historical({
                 symbol: symbol,
