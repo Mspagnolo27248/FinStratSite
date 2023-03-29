@@ -193,3 +193,46 @@ color: black;
 background-color: #04AA6D;
 color: white;
 }
+
+
+
+/*Dark Mode Table*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  border: 1px solid #666;
+  padding: 10px;
+}
+
+tr:nth-child(even) td {
+  background-color: #262626;
+}
+
+tr:hover td {
+  background-color: #333;
+}
+
+/* @media (max-width: 768px) {
+  th, td {
+    display: block;
+  }
+  
+  th {
+    text-align: center;
+  }
+} */

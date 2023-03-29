@@ -7,7 +7,7 @@ export default function Form({children,submitHandler,btnText}) {
 <div>
     <form onSubmit={submitHandler}>
      {children}
-     <button type='submit' >{btnText}</button>
+     <button className={styles['btn']} type='submit' >{btnText}</button>
     </form>
 
 </div>

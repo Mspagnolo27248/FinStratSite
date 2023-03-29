@@ -6,6 +6,7 @@ import { BsFillBarChartFill } from "react-icons/bs";
 import { MdClear, MdArrowForwardIos, MdOutlineSearch } from "react-icons/md";
 import { SlArrowDown } from "react-icons/sl";
 import { useRouter } from "next/router";
+
 //<MdOutlineSearch size={20}  style={{ height:'21px', width:'21px'}}/>
 export default function Sidebar(props) {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function Sidebar(props) {
           <ul>
             <li>Home</li>
             <li className={styles["dropdown"]}>
-              Academy
+              Finance
               <div className={styles["dropdown-content"]}>
                 <Link href="/Academy">Overview</Link>
                 <Link href="/Academy/FutureValue">Future Value</Link>
@@ -164,7 +165,7 @@ export default function Sidebar(props) {
           </li>
           <li>
             <div onClick={academyClickHandler} className={styles["page-link"]}>
-              Academy <SlArrowDown />
+              Finance <SlArrowDown />
             </div>
             {academyIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>

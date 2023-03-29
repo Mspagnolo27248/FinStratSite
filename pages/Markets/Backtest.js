@@ -8,6 +8,8 @@ import SelectInput from "../../components/FormElements/SelectInput/SelectInput";
 
 import { StockTrader } from "../../Utilities/stock-trader";
 
+import styles from '../../styles/Markets/backtest.module.css';
+
 export default function Backtest() {
   const [stockData, setStockData] = useState([]);
   const [resultData, setResultData] = useState([]);
@@ -87,20 +89,9 @@ export default function Backtest() {
 
   return (
     <>
-      <div>
+      <div className={styles["page"]}>
         <h1>Back Test Momentum Strategy</h1>
-        <table>
-          <tbody>
-            <tr>
-              <td>Wins</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>Loss</td>
-              <td>50</td>
-            </tr>
-          </tbody>
-        </table>
+  
 
         <Form {...formProps}>
           <InputField {...inputTickerProps} />
@@ -114,20 +105,22 @@ export default function Backtest() {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Days to Max</th>
+              <th>Dip</th>
               <th>Max</th>
-              <th>Position</th>
-              <th>Value</th>
+              <th>Days to Max</th>
+             
+              
             </tr>
           </thead>
           <tbody>
             {stockData.map((data, index) => (
               <tr key={index}>
-                <td>{data.date}</td>
+                <td>{data.date.slice(0,10)}</td>
+                <td>{(data.value*100).toFixed(2)}%</td>
+                <td>{(data.max*100).toFixed(2)}%</td>
                 <td>{data.days_to_max}</td>
-                <td>{data.max}</td>
-                <td>{data.position}</td>
-                <td>{data.value}</td>
+    
+               
               </tr>
             ))}
           </tbody>
