@@ -2,7 +2,6 @@
 
 .input-group{
   --font-color:rgba(219, 214, 214, 0.479);
-  --btn-border-color: rgba(0, 174, 255, 0.849);
   --container-inputs-bg: rgb(0, 0, 0);
   --border-color:rgba(105, 104, 104, 0.479);
   --border-focus-color: #9ecaed;
@@ -16,8 +15,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg);
+}
 
 .input-container {
+
+  
   background-color: var(--container-inputs-bg);
   padding: .5rem;
   border: 2px solid var(--border-color);

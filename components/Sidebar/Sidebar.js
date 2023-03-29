@@ -46,9 +46,12 @@ export default function Sidebar(props) {
   return (
     <>
       <nav className={styles.navbar}>
-        <div className={styles[`navbar-logo`]}>
+      <Link href="/">
+      <div className={styles[`navbar-logo`]}>
           <BsFillBarChartFill /> Finstrat Trader
         </div>
+      </Link>
+        
         <div className={styles["navbar-links"]}>
           <ul>
             <li>Home</li>
@@ -69,7 +72,7 @@ export default function Sidebar(props) {
                 <Link href="/Markets">Overview</Link>
                 <Link href="/Markets/Search">Search</Link>
                 <Link href="/Markets/History">History</Link>
-               
+                <Link href="/Markets/Backtest">Backtest</Link>
               </div>
             </li>
             <li className={styles["dropdown"]}>
@@ -119,6 +122,9 @@ export default function Sidebar(props) {
                 </Link>
                 <Link href="/Markets/History" onClick={marketClickHandler}>
                   History
+                </Link>
+                <Link href="/Markets/Backtest" onClick={marketClickHandler}>
+                  Backtest
                 </Link>
               </div>
             )}

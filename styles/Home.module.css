@@ -2,3 +2,33 @@
   background-color: var(--btn-btn-bg-primary);
   color:var(--btn-btn-color-primary)
 }
+
+
+.page-link{
+  border-radius: 50%;
+  background-color: white;
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+.page-link span{
+font-weight: bold;
+font-size: 1.5rem;
+}
+
+.page-link:hover,
+.page-link:active{
+background-color: grey;
+color: white;
+}
+
+.page-link-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
