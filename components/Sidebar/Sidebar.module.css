@@ -1,5 +1,5 @@
 .nav-content-spacer{
-   height: 5rem;
+   height: 7rem;
 
 }
 .navbar{
@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    height: 5rem;
+    height: 3rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,10 +21,11 @@
     font-weight: bold;
     font-size: 2rem;
     padding: 1rem 1rem;
-    height: 100px;
+   
     overflow: hidden;
     margin-top: .5rem;
     margin-bottom: 0;
+    cursor: pointer, default;
     
  }
 
@@ -80,8 +81,8 @@ color: blue;
 
  .navbar-toggle{
     position: absolute;
-    top: 1rem;
-    right: 2rem;
+    top: .5rem;
+    right: 2.5rem;
     width: 50px;
     margin-top: .5rem;
     margin-bottom: 0;
@@ -192,6 +193,22 @@ color: blue;
       }
       .sidebar-dropdown__content a{
          font-weight: 400;
+         margin-bottom: .05rem;
+         margin-top: .05rem;    
+        }
+
+      .sidebar-dropdown__content a div{         
+         border-radius: 10px;
+         display: inline-block;
+         font: bold;
+         padding: .25rem .75rem;
+       
+      }
+
+      .sidebar-dropdown__content a div:hover{
+      color: rgb(255, 255, 255);
+      background-color: rgb(124, 0, 240);
+   
       }
       .sidebar-dropdown__content{
          display: flex;

@@ -116,16 +116,19 @@ export default function Sidebar(props) {
             {marketsIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>
                 <Link href="/Markets" onClick={marketClickHandler}>
-                  Overview
+                  <div>Indexs</div>
                 </Link>
                 <Link href="/Markets/Search" onClick={marketClickHandler}>
-                  <span>Search</span>{" "}
+                  <div>Search</div>
                 </Link>
                 <Link href="/Markets/History" onClick={marketClickHandler}>
-                  History
+                  <div>Stock History</div>
                 </Link>
                 <Link href="/Markets/Backtest" onClick={marketClickHandler}>
-                  Backtest
+                  <div>Backtest</div>
+                </Link>
+                <Link href="/Markets/OptionsPrice" onClick={marketClickHandler}>
+                  <div>Options Price</div>
                 </Link>
               </div>
             )}
@@ -137,28 +140,28 @@ export default function Sidebar(props) {
             {economyIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>
                 <Link href="/Economy" onClick={economyClickHandler}>
-                  Overview
+                  <div>Overview</div>
                 </Link>
                 <Link href="/Economy/FREDSeries" onClick={economyClickHandler}>
-                  Series St. Louis FRED API
+                  <div>Series Search</div>
                 </Link>
                 <Link href="/Economy/Series" onClick={economyClickHandler}>
-                  Series Data
+                  <div>Latest Releases</div>
                 </Link>
                 <Link href="/Economy/Employment" onClick={economyClickHandler}>
-                  Employment Data
+                  <div>Employment Data</div>
                 </Link>
                 <Link href="/Economy/GDP" onClick={economyClickHandler}>
-                  GDP Data
+                  <div>GDP Data</div>
                 </Link>
                 <Link href="/Economy/Inflation" onClick={economyClickHandler}>
-                  Inflation Data
+               <div>Inflation Data</div>
                 </Link>
                 <Link
                   href="/Economy/InterestRates"
                   onClick={economyClickHandler}
                 >
-                  Interest Rates Data
+                 <div>Interest Rates Data</div>
                 </Link>
               </div>
             )}
@@ -170,16 +173,16 @@ export default function Sidebar(props) {
             {academyIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>
                 <Link href="/Academy/FutureValue" onClick={academyClickHandler}>
-                  Future Value
+                 <div>Future Value</div> 
                 </Link>
                 <Link href="/Academy/PresentValue" onClick={academyClickHandler}>
-                  Present Value
+                  <div>Present Value</div>
                 </Link>
                 <Link href="/Academy/LoanPmt" onClick={academyClickHandler}>
-                  Loan Payment
+                 <div>Loan Payment</div>
                 </Link>
                 <Link href="/Academy/FVAnnuityPmt" onClick={academyClickHandler}>
-                  FV Annuity Payment
+                  <div>FV Annuity Pmt</div>
                 </Link>
               </div>
             )}
