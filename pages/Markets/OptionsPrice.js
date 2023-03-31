@@ -12,7 +12,7 @@ export default function OptionsPrice() {
     // const [exercisePrice,setExercisePrice] = useState();
     // const [impliedVolatiliy,setImpliedVolatility]  = useState();
     // const [exerciseDate,setExerciseDate] = useState();
-    const [callPrice,setCallPrice] = useState(0.0);
+    const [callPrice,setCallPrice] = useState(0.99);
     const [formData, setFormData] = useState({
         price:0,
         exPrice:0,
