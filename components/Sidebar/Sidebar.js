@@ -55,25 +55,15 @@ export default function Sidebar(props) {
         
         <div className={styles["navbar-links"]}>
           <ul>
-            <li>Home</li>
-            <li className={styles["dropdown"]}>
-              Finance
-              <div className={styles["dropdown-content"]}>
-                <Link href="/Academy">Overview</Link>
-                <Link href="/Academy/FutureValue">Future Value</Link>
-                <Link href="/Academy/PresentValue">Present Value</Link>
-                <Link href="/Academy/FVAnnuityPmt">Annuity Payments</Link>
-                <Link href="/Academy/LoanPmt">Loan Payments</Link>
-          
-              </div>
-            </li>
+            <li>Dashboard</li>          
             <li className={styles["dropdown"]}>
             Markets
             <div className={styles["dropdown-content"]}>
-                <Link href="/Markets">Overview</Link>
+                <Link href="/Markets">Indexes</Link>
                 <Link href="/Markets/Search">Search</Link>
-                <Link href="/Markets/History">History</Link>
+                <Link href="/Markets/History">Stock History</Link>
                 <Link href="/Markets/Backtest">Backtest</Link>
+                <Link href="/Markets/OptionsPrice">Options Price</Link>
               </div>
             </li>
             <li className={styles["dropdown"]}>
@@ -85,6 +75,17 @@ export default function Sidebar(props) {
                 <Link href="/Economy/GDP">GDP</Link>
                 <Link href="/Economy/InterestRates">Interest Rates</Link>
                 <Link href="/Economy/Inflation">Inflation</Link>
+              </div>
+            </li>
+            <li className={styles["dropdown"]}>
+              Finance
+              <div className={styles["dropdown-content"]}>
+                <Link href="/Academy">Overview</Link>
+                <Link href="/Academy/FutureValue">Future Value</Link>
+                <Link href="/Academy/PresentValue">Present Value</Link>
+                <Link href="/Academy/FVAnnuityPmt">Annuity Payments</Link>
+                <Link href="/Academy/LoanPmt">Loan Payments</Link>
+          
               </div>
             </li>
           </ul>
@@ -101,7 +102,7 @@ export default function Sidebar(props) {
         className={`${styles["nav-sidebar"]} ${isOpen ? styles["open"] : ""}`}
       >
         <div className={styles["sidebar-header"]}>
-          <BsFillBarChartFill /> Finstrat Trader{" "}
+         <Link href={"/"}><BsFillBarChartFill /> Finstrat Trader{" "}</Link> 
         </div>
         <ul>
           <li>
@@ -116,7 +117,7 @@ export default function Sidebar(props) {
             {marketsIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>
                 <Link href="/Markets" onClick={marketClickHandler}>
-                  <div>Indexs</div>
+                  <div>Indexes</div>
                 </Link>
                 <Link href="/Markets/Search" onClick={marketClickHandler}>
                   <div>Search</div>

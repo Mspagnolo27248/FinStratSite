@@ -12,12 +12,13 @@ export default function OptionsPrice() {
     // const [exercisePrice,setExercisePrice] = useState();
     // const [impliedVolatiliy,setImpliedVolatility]  = useState();
     // const [exerciseDate,setExerciseDate] = useState();
-    const [callPrice,setCallPrice] = useState();
+    const [callPrice,setCallPrice] = useState(0.0);
     const [formData, setFormData] = useState({
         price:0,
         exPrice:0,
         vol:.15,
-        exDate:new Date().toISOString().slice(0, 10)
+        exDate:new Date().toISOString().slice(0, 10),
+        rf:.048
     
       });
   
@@ -29,7 +30,7 @@ export default function OptionsPrice() {
             parseFloat(formData.vol),
             parseFloat(formData.exPrice),
             formData.exDate,
-            .04
+            formData.rf
             
            ) 
        setCallPrice(callPrice.toFixed(4));

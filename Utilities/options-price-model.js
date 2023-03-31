@@ -19,7 +19,7 @@ function dateDiff(a, b) {
 class BlackScholes {
     static callPrice(stockPrice, impliedVol, exPrice, exDate, rfRate = .0060, ) {
         const today = new Date()
-        const exerciseDate = new Date(exDate+"T00:00:00")
+        const exerciseDate = new Date(exDate+"T16:00:00")
         const yearsToExpiration = dateDiff(exerciseDate, today) / 365
         const pvExPrice = exPrice * Math.exp(((-1 * rfRate )*yearsToExpiration))
         const d0 = impliedVol * (yearsToExpiration ** .5)
