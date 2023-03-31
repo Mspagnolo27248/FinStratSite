@@ -6,14 +6,14 @@
 
 .page-link{
   border-radius: 50%;
-  background-color: white;
+  background-color:blueviolet;
   height: 10rem;
   width: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: .5rem;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 .page-link span{
 font-weight: bold;
@@ -22,7 +22,7 @@ font-size: 1.5rem;
 
 .page-link:hover,
 .page-link:active{
-background-color: grey;
+background-color: rgb(36, 33, 37);
 color: white;
 }
 
