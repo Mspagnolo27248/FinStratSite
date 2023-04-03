@@ -13,7 +13,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 999;
+    /* overflow: hidden; cant do this hides dropdown */ 
  }
 
 
@@ -133,8 +134,13 @@ background-color: black;
         flex-direction: row;
         justify-content:space-between;
         align-items:baseline;
+        height: 6rem;
 
      }
+     .nav-content-spacer{
+      height: 6rem;
+   
+   }
 
      .navbar-links{
         display: flex;

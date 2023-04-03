@@ -11,9 +11,9 @@ var yahooFinance = require('yahoo-finance');
           
             await yahooFinance.historical({
                 symbol: 'SPY',
-                from:'2023-01-01',
+                from:'2015-01-01',
                 to:'2023-04-01',
-                period:'m' // see the docs for the full list
+                period:'d' // see the docs for the full list
             })
             .then((data) => res.send(data))
       
