@@ -39,7 +39,7 @@ export default function Search(props){
      })})
      .then(res => res.json());
     const addDateData = yahooRawData.map((obj)=> { return {...obj,date:convertFullStringDateToShortDate(obj.date)}});
-
+    addDateData.reverse();
     setCurrentChartData(
       SetChartData(
         addDateData.map((item) => item.adjClose),
