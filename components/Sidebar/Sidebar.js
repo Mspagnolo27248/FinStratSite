@@ -59,7 +59,7 @@ export default function Sidebar(props) {
             <li className={styles["dropdown"]}>
             Markets
             <div className={styles["dropdown-content"]}>
-                <Link href="/Markets">Indexes</Link>
+                <Link href="/Markets">Overview</Link>
                 <Link href="/Markets/Search">Search</Link>
                 <Link href="/Markets/History">Stock History</Link>
                 <Link href="/Markets/Backtest">Backtest</Link>
@@ -117,7 +117,7 @@ export default function Sidebar(props) {
             {marketsIsOpen && (
               <div className={styles["sidebar-dropdown__content"]}>
                 <Link href="/Markets" onClick={marketClickHandler}>
-                  <div>Indexes</div>
+                  <div>Overview</div>
                 </Link>
                 <Link href="/Markets/Search" onClick={marketClickHandler}>
                   <div>Search</div>
