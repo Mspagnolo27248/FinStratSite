@@ -31,7 +31,7 @@ export default function History() {
     }).then((response) => response.json());
 
  
-    setStockData([...data]);
+    setStockData(data);
  
   };
 
@@ -116,12 +116,12 @@ export default function History() {
             {stockData.map((data, index) => (
               <tr key={index}>
                 <td>{data.date.slice(0,10)}</td>
-                <td>{(data.open|0).toFixed(2)}</td>
-                <td>{(data.high|0).toFixed(2)}</td>
-                <td>{(data.low|0).toFixed(2)}</td>
-                <td>{(data.close|0).toFixed(2)}</td>
-                <td>{(data.adjClose|0).toFixed(2)}</td>
-                <td>{(data.volume|0).toLocaleString("en-US")}</td>            
+                <td>{(data.open||0).toFixed(2)}</td>
+                <td>{(data.high||0).toFixed(2)}</td>
+                <td>{(data.low||0).toFixed(2)}</td>
+                <td>{(data.close||0).toFixed(2)}</td>
+                <td>{(data.adjClose||0).toFixed(2)}</td>
+                <td>{(data.volume||0).toLocaleString("en-US")}</td>            
     </tr>
             ))}
           </tbody>

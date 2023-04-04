@@ -9,7 +9,7 @@ var yahooFinance = require('yahoo-finance');
           case 'GET':
             // Handle GET request
             await yahooFinance.quote({
-                symbol: 'WMT',
+                symbol: 'SPY',
                 modules: [ 'price', 'summaryDetail' ] // see the docs for the full list
               })
               .then((data) =>   res.send(data));
