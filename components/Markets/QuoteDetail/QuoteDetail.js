@@ -31,7 +31,7 @@ let divYield = "";
 let fiftyTwoWeekLow = "";
 let fiftyTwoWeekHigh = "";
 
-if(apiData.price){
+if(apiData){
      stockName = apiData.price.shortName;
      stockPrice = (apiData.price.regularMarketPrice||0).toFixed(2);
      priceDelta = (apiData.price.regularMarketChange || 0).toFixed(2);

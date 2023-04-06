@@ -2,13 +2,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import { render } from 'react-dom';
+import { BeatLoader } from 'react-spinners';
 import StockCard from '../../components/stock-card/StockCard'
 import styles from '../../styles/Markets/index.module.css'
 
 export default  function Markets() {
 
   const SYMBOLS = ['SPY','DOW','QQQ',"VXZ","SHY","IEF","TLT","GLD",]
- 
+  const [isLoading,setIsloading] = useState(true);
 
 const [cardData,setCardData] = useState([{
   isPositive:0,
@@ -34,51 +35,22 @@ useEffect(() => {
       volume: item.price.regularMarketVolume || 0,
       index: index,
     })).sort((a, b) => a.index - b.index));
+  setIsloading(false);
   };
   fetchData();
 }, []);
 
 
-// useEffect(()=>{
-// SYMBOLS.map(item=>{
-//   fetch('http://localhost:3000/api/YahooApi',
-//   {method: 'POST', 
-//   body:JSON.stringify({symbol:item})
-//   })
-//   .then(res => res.json())
-//   .then((data)=>{
-//     setCardData(prevArray => [...prevArray, {
-//       isPositive:data.price.regularMarketChange>0,
-//       itemName:data.price.shortName,
-//       itemPrice:data.price.regularMarketPrice,
-//       priceDelta:(data.price.regularMarketChange||0).toFixed(2),
-//       percentDelta:(data.price.regularMarketChangePercent*100).toFixed(2),
-//       volume:data.price.regularMarketVolume||0
-//     }]
-//     );
-//   })
-
-// })  
-// },[]);
-
-
-
-
-  // const stockCardData = {
-  //   isPositive:1,
-  //   itemName:"NASDAQ COMPOSITE",
-  //   itemPrice:"10,616.20",
-  //   priceDelta:"51.68",
-  //   percentDelta:"0.49%",
-  //   volume:"992,137,871"
-  // }
-    
-    
 
 
   return (
     <>
     <div className={styles['heading-container']}><h2 className={styles['heading-title']}>Markets Overview</h2></div>
+    {isLoading&&
+    <div style={{textAlign:"center",marginTop:"2rem"}}>
+    <BeatLoader color="blueviolet" />
+    </div>
+    }
     {cardData.map((item,idx)=>{
       return item.itemPrice !=""&&<StockCard key={idx} {...item}/>
     })}

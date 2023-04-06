@@ -6,16 +6,20 @@ import { SetChartData, SetChartOptions } from '../../Utilities/chart-js-wrapper'
 import LineChartLarge from "../../components/chart/LineChartLarge";
 import { convertFullStringDateToShortDate, getPastDate, getTodaysDate } from '../../Utilities/data-conversions';
 import styles from  '../../styles/Markets/search.module.css';
+import { BeatLoader } from 'react-spinners';
 
 export default function Search(props){
-  const [quoteDetails,setQuoteDetails] = useState({apiData:props.initalData});
-  const [stockTickerText,setStockTickerText] = useState(''); 
-  const [currentChartOptions, setCurrentChartOptions] = useState(SetChartOptions(props.ticker));
-
-  const [currentChartData, setCurrentChartData] = useState(SetChartData(
-      props.historyData.map((item) => item.adjClose),
-      props.historyData.map((item) => item.date),
-      "$"));
+  const [quoteDetails,setQuoteDetails] = useState();
+  const [stockTickerText,setStockTickerText] = useState('SPY'); 
+  const [currentChartOptions, setCurrentChartOptions] = useState(SetChartOptions(stockTickerText));
+  const [isLoading,setIsLoading]  = useState(true);
+  const [currentChartData, setCurrentChartData] = useState(
+    SetChartData(
+      [],
+     [],
+      "$"
+    )
+  );
 
 
 
@@ -61,24 +65,33 @@ export default function Search(props){
   
 
 
+useEffect(()=>{
+  
+  submitHandler()
+  .then(()=>
+  setIsLoading(false)
+  )
+
+},[]);
 
   return (
     <>
      <div>
      <SearchInput {...searchInputProps}/>
      </div>
-    
-     <QuoteDetail {...quoteDetails}>   
+     {isLoading&&    <div style={{textAlign:"center",marginTop:"2rem"}}>
+    <BeatLoader color="blueviolet" />
+    </div>}
+     {!isLoading&&<QuoteDetail {...quoteDetails}>   
         <div className={styles['page-chart-container']}>
         <LineChartLarge
             chartData={currentChartData}
             chartOptions={currentChartOptions}
         />
 
-        </div>
-      
+        </div>     
   
-   </QuoteDetail>
+   </QuoteDetail>}
      
   
     </>
@@ -94,28 +107,10 @@ export async function getServerSideProps({req}){
     ? `https://${req.headers.host}/api/`
     : `http://${req.headers.host}/api/`;
 
-  const data = await  fetch(`${baseUrl}YahooApi`, {
-    method: 'POST',
-    body: JSON.stringify({ symbol: 'SPY' })
-  })
-  .then(res => res.json());
-
-
-  const yahooRawData = await fetch(`${baseUrl}YahooApi/StockHistory`,{
-  method: "POST",
-  body: JSON.stringify({
-    symbol: 'SPY',
-    from:getPastDate(-5),
-    to:getTodaysDate(),
-    period:'d' // see the docs for the full list
-  })}).then(res => res.json());
-  const historyData = yahooRawData.map((obj)=> { return {...obj,date:convertFullStringDateToShortDate(obj.date)}});
-  historyData.reverse();
-
+ 
   return {
     props:{
-    initalData:data,
-    historyData:historyData,
-  ticker:'SPY'    }}
+      baseUrl:baseUrl,
+  }}
 
 }

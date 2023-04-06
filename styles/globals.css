@@ -10,7 +10,7 @@
 :root{
   --btn-btn-bg-primary:rgba(0,0,204,100);
   --btn-btn-color-primary:white;
-  --page-title-color:white;
+  --page-title-color:rgb(255, 255, 255);
 
 }
 html,
