@@ -1,0 +1,17 @@
+.links{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.link{
+    background-color: blueviolet;
+    padding: .5rem 1rem;
+    margin: .25rem .5rem;
+    width: 50%;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 25px;
+}

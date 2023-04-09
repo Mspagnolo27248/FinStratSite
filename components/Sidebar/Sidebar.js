@@ -55,7 +55,7 @@ export default function Sidebar(props) {
         
         <div className={styles["navbar-links"]}>
           <ul>
-            <li>Dashboard</li>          
+            {/* <li>Dashboard</li>           */}
             <li className={styles["dropdown"]}>
             Markets
             <div className={styles["dropdown-content"]}>
@@ -105,11 +105,11 @@ export default function Sidebar(props) {
          <Link href={"/"}><BsFillBarChartFill /> Finstrat Trader{" "}</Link> 
         </div>
         <ul>
-          <li>
+          {/* <li>
             <Link href="#" className={styles["page-link"]}>
               Dashboard <SlArrowDown />
             </Link>
-          </li>
+          </li> */}
           <li>
             <div onClick={marketClickHandler} className={styles["page-link"]}>
               Markets <SlArrowDown />
