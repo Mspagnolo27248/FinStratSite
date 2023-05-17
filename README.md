@@ -31,4 +31,4 @@ To set up Finstrat locally, follow these steps:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/finstrat.git
+   git clone https://github.com/Mspagnolo27248/FinStratSite.git
