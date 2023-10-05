@@ -6,8 +6,6 @@ import LoanPaymentForm from '../../components/Academy/LoanPmtForm/LoanPmtForm'
 export default function LoanPmt() {
   return (
     <>
-
-    <div>Loan Payment </div>
     <LoanPaymentForm/>
     </>
 

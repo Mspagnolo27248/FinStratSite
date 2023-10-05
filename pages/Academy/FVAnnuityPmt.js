@@ -7,8 +7,6 @@ import FvAnnuityPmtForm from '../../components/Academy/FVAnnuityPmtForm/FVAnnuit
 export default function FVAnnuityPage() {
   return (
     <>
-
-    <div>Future Value</div>
     <FvAnnuityPmtForm/>
     </>
 

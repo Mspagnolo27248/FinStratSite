@@ -6,8 +6,6 @@ import FutureValueForm from '../../components/Academy/FutureValueForm/FutureValu
 export default function FutureValue() {
   return (
     <>
-
-    <div>Future Value</div>
     <FutureValueForm/>
     </>
 

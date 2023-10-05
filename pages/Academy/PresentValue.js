@@ -6,8 +6,6 @@ import PresentValueForm from '../../components/Academy/PresentValueForm/PresentV
 export default function FutureValue() {
   return (
     <>
-
-    <div>Future Value</div>
     <PresentValueForm/>
     </>
 
