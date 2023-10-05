@@ -74,3 +74,23 @@
     background-color:red;
 
   }
+
+
+  
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  /* CSS rules for laptops */
+  /* Place your styles here */
+
+
+  .card-container{
+    width: 33%;
+    display: inline-block;
+    margin-right: .75rem;
+    margin-left: .75rem;
+  }
+
+  .info-container{
+position: absolute;
+top: 10%;
+left: 5%;}
+}

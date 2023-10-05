@@ -52,7 +52,6 @@ export default function Search(props){
     
         setCurrentChartOptions(
           SetChartOptions(stockTickerText));
-
           setQuoteDetails({apiData:data});
     };
 
@@ -65,8 +64,7 @@ export default function Search(props){
   
 
 
-useEffect(()=>{
-  
+useEffect(()=>{  
   submitHandler()
   .then(()=>
   setIsLoading(false)

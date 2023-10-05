@@ -1,6 +1,6 @@
 
-var yahooFinance = require('yahoo-finance');
-
+//var yahooFinance = require('yahoo-finance');
+const yahooFinance = require('yahoo-finance2').default; // NOTE 
 
     export default async function handler(req, res) {
         const { method } = req;
@@ -8,11 +8,8 @@ var yahooFinance = require('yahoo-finance');
         switch (method) {
           case 'GET':
             // Handle GET request
-            await yahooFinance.quote({
-                symbol: 'SPY',
-                modules: [ 'price', 'summaryDetail' ] // see the docs for the full list
-              })
-              .then((data) =>   res.send(data));
+            await yahooFinance.quote
+             ('SPY') .then((data) =>   res.send(data));
         
       
 
@@ -23,10 +20,7 @@ var yahooFinance = require('yahoo-finance');
             // res.status(200).json({ message: 'Handling POST request' });
             const bodyObject = JSON.parse(req.body);
             const symbol = bodyObject.symbol;
-            await yahooFinance.quote({
-              symbol: symbol,
-              modules: [ 'price', 'summaryDetail' ] // see the docs for the full list
-            })
+            await yahooFinance.quote(symbol)
             .then((data) =>   res.send(data));
             break;
           case 'PUT':

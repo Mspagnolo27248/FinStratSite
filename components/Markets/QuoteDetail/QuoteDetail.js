@@ -32,25 +32,25 @@ let fiftyTwoWeekLow = "";
 let fiftyTwoWeekHigh = "";
 
 if(apiData){
-     stockName = apiData.price.shortName;
-     stockPrice = (apiData.price.regularMarketPrice||0).toFixed(2);
-     priceDelta = (apiData.price.regularMarketChange || 0).toFixed(2);
-     percentDelta = (apiData.price.regularMarketChangePercent * 100).toFixed(2);
-     volume = (apiData.price.regularMarketVolume || 0).toLocaleString();
-     bid = apiData.summaryDetail.bid;
-     ask = apiData.summaryDetail.ask;
+     stockName = apiData.shortName;
+     stockPrice = (apiData.regularMarketPrice||0).toFixed(2);
+     priceDelta = (apiData.regularMarketChange || 0).toFixed(2);
+     percentDelta = (apiData.regularMarketChangePercent * 100).toFixed(2);
+     volume = (apiData.regularMarketVolume || 0).toLocaleString();
+     bid = apiData.bid;
+     ask = apiData.ask;
      quoteTime = apiData.preMarketTime;
-      previousClose = apiData.price.regularMarketPreviousClose;
-      open = (apiData.price.regularMarketOpen||0).toFixed(2);
-      bidSize= apiData.summaryDetail.bidSize;
-      askSize =apiData.summaryDetail.askSize;
-      marketCap = (apiData.price.marketCap||0).toLocaleString(); //price.marketCap
-      daysHigh = apiData.price.regularMarketDayHigh; //price.regularMarketDayHigh
-      daysLow = apiData.price.regularMarketDayLow; //price.regularMarketDayLow
-      averageDailyVolume3Month = (apiData.price.averageDailyVolume3Month|| 0).toLocaleString();;//price.averageDailyVolume3Month
-      divYield = (apiData.summaryDetail.yield*100.0||0).toFixed(2);
-      fiftyTwoWeekHigh = (apiData.summaryDetail.fiftyTwoWeekHigh||0).toFixed(2);
-      fiftyTwoWeekLow = (apiData.summaryDetail.fiftyTwoWeekLow||0).toFixed(2);
+      previousClose = apiData.regularMarketPreviousClose;
+      open = (apiData.regularMarketOpen||0).toFixed(2);
+      bidSize= apiData.bidSize;
+      askSize =apiData.askSize;
+      marketCap = (apiData.marketCap||0).toLocaleString(); //price.marketCap
+      daysHigh = apiData.regularMarketDayHigh; //price.regularMarketDayHigh
+      daysLow = apiData.regularMarketDayLow; //price.regularMarketDayLow
+      averageDailyVolume3Month = (apiData.averageDailyVolume3Month|| 0).toLocaleString();;//price.averageDailyVolume3Month
+      divYield = (apiData.trailingAnnualDividendYield*100||0).toFixed(2);
+      fiftyTwoWeekHigh = (apiData.fiftyTwoWeekHigh||0).toFixed(2);
+      fiftyTwoWeekLow = (apiData.fiftyTwoWeekLow||0).toFixed(2);
 
 
 }

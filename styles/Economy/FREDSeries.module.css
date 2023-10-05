@@ -145,4 +145,30 @@ and (orientation: landscape) {
    
   }
 
+  @media screen and (min-width: 854px) {
+    /* Styles for screens over 845px in width */
+    /* Add your styles here */
+
+    .page{
+  display: flex;
+  flex-direction: row;
+
+    }
+
+    .page canvas{
+      width: 700px !important;
+      height: 350px !important;
+
+    }
+
+    .page form{
+      width: 30%;
+    }
+
+    .form-container{
+      margin-left: 0;
+    }
+
+  }
+
 

@@ -87,7 +87,7 @@ export default function OptionsPrice() {
 
   return (
     <div className={styles['page']}>
-  <div>OptionsPrice</div>
+  <h1 >Calculate Options Price</h1>
 
 
   <Form {...formProps}>

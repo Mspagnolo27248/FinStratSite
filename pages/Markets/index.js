@@ -1,15 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { useEffect, useState } from 'react';
-import { render } from 'react-dom';
 import { BeatLoader } from 'react-spinners';
 import StockCard from '../../components/stock-card/StockCard'
 import styles from '../../styles/Markets/index.module.css'
 
 export default  function Markets() {
-
-  const SYMBOLS = ['SPY','DOW','QQQ',"VXZ","SHY","IEF","TLT","GLD",]
-  const [isLoading,setIsloading] = useState(true);
+const SYMBOLS = ['SPY','DIA','QQQ',"VXZ","SHY","IEF","TLT","GLD",]
+const [isLoading,setIsloading] = useState(false);
 
 const [cardData,setCardData] = useState([{
   isPositive:0,
@@ -22,21 +18,48 @@ const [cardData,setCardData] = useState([{
 
 useEffect(() => {
   const fetchData = async () => {
-    const data = await Promise.all(SYMBOLS.map(item => fetch('/api/YahooApi', {
-      method: 'POST',
-      body: JSON.stringify({ symbol: item })
-    }).then(res => res.json())));
-    setCardData(data.map((item, index) => ({
-      isPositive: item.price.regularMarketChange > 0,
-      itemName: item.price.shortName,
-      itemPrice: item.price.regularMarketPrice,
-      priceDelta: (item.price.regularMarketChange || 0).toFixed(2),
-      percentDelta: (item.price.regularMarketChangePercent * 100).toFixed(2),
-      volume: item.price.regularMarketVolume || 0,
-      index: index,
-    })).sort((a, b) => a.index - b.index));
-  setIsloading(false);
+    setIsloading(true);
+    try {
+      const responses = await Promise.all(
+        SYMBOLS.map(async item => {
+          try {
+            const response = await fetch(`/api/YahooApi`, {
+              method: 'POST',
+              body: JSON.stringify({ symbol: item }),
+            });
+
+            if (!response.ok) {
+              throw new Error(`Request failed with status: ${response.status}`);
+            }
+
+            return response.json();
+          } catch (error) {
+            console.error(`Error fetching data for ${item}:`, error);
+            return null; // Return null for failed requests
+          }
+        })
+      );
+
+      const formattedData = responses
+        .filter(item => item !== null) // Filter out failed requests
+        .map((item, index) => ({
+          isPositive: item.regularMarketChange > 0,
+          itemName: item.shortName,
+          itemPrice: item.regularMarketPrice,
+          priceDelta: (item.regularMarketChange || 0).toFixed(2),
+          percentDelta: (item.regularMarketChangePercent ).toFixed(2),
+          volume: item.regularMarketVolume || 0,
+          index: index,
+        }));
+
+      setCardData(formattedData.sort((a, b) => a.index - b.index));
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    setIsloading(false);
   };
+
   fetchData();
 }, []);
 
