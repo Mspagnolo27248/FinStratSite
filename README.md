@@ -1,7 +1,7 @@
 #  [Finstrat](https://finstrat-site.vercel.app) https://finstrat-site.vercel.app
 
 Finstrat is a web application built with Next.js and Vanilla CSS that provides users with three separate functions: Economic Data, Stock Data, and Finance Calculators. This project aims to offer a comprehensive set of tools and information for users interested in financial analysis, stock market data, and common finance calculations.
-
+NOTE: On 4/15/24 Yahoo disabled the api being used markets section of this site is down until further notice. 
 ## Features
 
 ### Stock Data
