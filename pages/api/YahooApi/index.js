@@ -1,5 +1,4 @@
 
-//var yahooFinance = require('yahoo-finance');
 const yahooFinance = require('yahoo-finance2').default; // NOTE 
 
     export default async function handler(req, res) {

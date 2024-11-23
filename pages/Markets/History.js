@@ -14,7 +14,7 @@ export default function History() {
     ticker:"",
     from:"",
     to:"",
-    period:"d",
+    period:"1d",
   });
 
   const submitHandler = async (e) => {
@@ -75,8 +75,8 @@ export default function History() {
     name: "period",
     value: formData.period,
     options: [
-      { label: "Daily", value: "d" },
-      { label: "Monthly", value: "m" },
+      { label: "Daily", value: "1d" },
+      { label: "Monthly", value: "1mo" },
     ],
     onChange: changeHandler,
   };
@@ -103,7 +103,7 @@ export default function History() {
               <th>High</th>
               <th>Low</th>
               <th>Close</th>
-              <th>AdjClose</th>
+              <th>adjclose</th>
               <th>Volume</th>
 
 
@@ -120,7 +120,7 @@ export default function History() {
                 <td>{(data.high||0).toFixed(2)}</td>
                 <td>{(data.low||0).toFixed(2)}</td>
                 <td>{(data.close||0).toFixed(2)}</td>
-                <td>{(data.adjClose||0).toFixed(2)}</td>
+                <td>{(data.adjclose||0).toFixed(2)}</td>
                 <td>{(data.volume||0).toLocaleString("en-US")}</td>            
     </tr>
             ))}

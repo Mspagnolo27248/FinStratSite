@@ -1,4 +1,4 @@
-var yahooFinance = require('yahoo-finance')
+var yahooFinance = require('yahoo-finance2').default
 
 class YahooApiAccess {
     constructor() {
@@ -6,12 +6,12 @@ class YahooApiAccess {
     }
 
 // Get Stock Data from Yahoo Finance
-    static historical(symbol = 'SPY', from = '2022-01-01', to = '2022-01-10', period = 'd', callback) {
-        yahooFinance.historical({
-            symbol: symbol,
-            from: from,
-            to: to,
-            period: period // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
+    static historical(symbol = 'SPY', from = '2022-01-01', to = '2022-01-10', period = '1d', callback) {
+        yahooFinance.chart(symbol,{
+          
+            period1: from,
+            period2: to,
+            interval: period // '1d' (daily), '1w' (weekly), '1m' (monthly), 'v' (dividends only)
         }, function (err, data) {
             callback(data)
 
@@ -31,19 +31,19 @@ class YahooApiAccess {
         if (periods >= data.length) {
             var total = 0;
             data.forEach((x) => {
-                total += x.adjClose
+                total += x.adjclose
             })
             return [total / data.length]
         } else {
             var total = 0;
             var values = [];
             for (let i = 0; i < data.length; i++) {
-                total += data[i].adjClose
+                total += data[i].adjclose
                 if (i < periods - 1) {
                     continue
                 } else {
                     values.push(total / periods)
-                    total -= data[i - (periods - 1)].adjClose
+                    total -= data[i - (periods - 1)].adjclose
                 }
             }
             return values
@@ -65,7 +65,7 @@ class YahooApiAccess {
 //Holding Period Returns:(End Period / Begin Period) - 1
     static returns(data){
         let returns = []
-        let prices = data.map(a=>a.adjClose).reverse()
+        let prices = data.map(a=>a.adjclose).reverse()
         for(const i in prices){
             if(i>0){
                 returns.push((prices[i]/prices[i-1])-1)

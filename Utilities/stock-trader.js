@@ -19,19 +19,19 @@ export class StockTrader {
         if (periods >= data.length) {
             var total = 0;
             data.forEach((x) => {
-                total += x.adjClose
+                total += x.adjclose
             })
             return [total / data.length]
         } else {
             var total = 0;
             var values = [];
             for (let i = 0; i < data.length; i++) {
-                total += data[i].adjClose
+                total += data[i].adjclose
                 if (i < periods - 1) {
                     continue
                 } else {
                     values.push(total / periods)
-                    total -= data[i - (periods - 1)].adjClose
+                    total -= data[i - (periods - 1)].adjclose
                 }
             }
             return values
@@ -53,7 +53,7 @@ export class StockTrader {
 //Holding Period Returns:(End Period / Begin Period) - 1
     static returns(data){
         let returns = []
-        let prices = data.map(a=>a.adjClose).reverse()
+        let prices = data.map(a=>a.adjclose).reverse()
         for(const i in prices){
             if(i>0){
                 returns.push((prices[i]/prices[i-1])-1)

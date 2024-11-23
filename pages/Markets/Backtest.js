@@ -17,7 +17,7 @@ export default function Backtest() {
     ticker:"",
     from:"",
     to:"",
-    period:"d",
+    period:"1d",
   });
 
   const submitHandler = async (e) => {
@@ -81,8 +81,8 @@ export default function Backtest() {
     name: "period",
     value: formData.period,
     options: [
-      { label: "Daily", value: "d" },
-      { label: "Monthly", value: "m" },
+      { label: "Daily", value: "1d" },
+      { label: "Monthly", value: "1mo" },
     ],
     onChange: changeHandler,
   };

@@ -1,5 +1,5 @@
 
-var yahooFinance = require('yahoo-finance');
+var yahooFinance = require('yahoo-finance2').default;
 
 
     export default async function handler(req, res) {
@@ -9,13 +9,11 @@ var yahooFinance = require('yahoo-finance');
           case 'GET':
             // Handle GET request
           
-            await yahooFinance.historical({
-                symbol: 'SPY',
-                from:'2015-01-01',
-                to:'2023-04-01',
-                period:'d' // see the docs for the full list
+            await yahooFinance.chart('SPY',{               
+                period1:'2018-01-01',
+                //period2:'2023-04-01',            
             })
-            .then((data) => res.send(data))
+            .then((data) => res.send(data.quotes))
       
 
 
@@ -27,13 +25,12 @@ var yahooFinance = require('yahoo-finance');
             const startDate = bodyObject.from;
             const endDate = bodyObject.to;
             const period = bodyObject.period;
-            await yahooFinance.historical({
-                symbol: symbol,
-                from:startDate,
-                to:endDate,
-                period:period // see the docs for the full list
+            await yahooFinance.chart(symbol,{                
+                period1:startDate,
+                period2:endDate,
+                interval:period // see the docs for the full list
             })
-            .then((data) => res.send(data))
+            .then((data) => res.send(data.quotes))
             break;
           case 'PUT':
             // Handle PUT request

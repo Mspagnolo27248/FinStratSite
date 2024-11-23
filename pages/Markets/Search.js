@@ -39,14 +39,14 @@ export default function Search(props){
         symbol: stockTickerText,
         from:getPastDate(-5),
         to:getTodaysDate(),
-        period:'d'
+        period:'1d'
      })})
      .then(res => res.json());
     const addDateData = yahooRawData.map((obj)=> { return {...obj,date:convertFullStringDateToShortDate(obj.date)}});
     addDateData.reverse();
     setCurrentChartData(
       SetChartData(
-        addDateData.map((item) => item.adjClose),
+        addDateData.map((item) => item.adjclose),
         addDateData.map((item) => item.date),
         "$"));
     
