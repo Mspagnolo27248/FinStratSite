@@ -30,7 +30,7 @@ var yahooFinance = require('yahoo-finance2').default;
                 period2:endDate,
                 interval:period // see the docs for the full list
             })
-            .then((data) => res.send(data.quotes))
+            .then((data) => res.send(data.quotes.reverse()))
             break;
           case 'PUT':
             // Handle PUT request
