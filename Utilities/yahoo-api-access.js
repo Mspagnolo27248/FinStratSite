@@ -8,14 +8,11 @@ class YahooApiAccess {
 // Get Stock Data from Yahoo Finance
     static historical(symbol = 'SPY', from = '2022-01-01', to = '2022-01-10', period = '1d', callback) {
         yahooFinance.chart(symbol,{
-          
             period1: from,
             period2: to,
-            interval: period // '1d' (daily), '1w' (weekly), '1m' (monthly), 'v' (dividends only)
-        }, function (err, data) {
-            callback(data)
-
-
+            interval: period // '1d' (daily), '1wk' (weekly), '1mo' (monthly)
+        }).then(function (data) {
+            callback(data.quotes)
         });
     }
 
@@ -176,4 +173,4 @@ class YahooApiAccess {
 }
 
 
-module.exports = StockTrader;
+module.exports = YahooApiAccess;

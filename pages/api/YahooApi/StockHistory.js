@@ -28,7 +28,7 @@ var yahooFinance = require('yahoo-finance2').default;
             await yahooFinance.chart(symbol,{                
                 period1:startDate,
                 period2:endDate,
-                interval:period // see the docs for the full list
+                interval:period // '1d' (daily), '1wk' (weekly), '1mo' (monthly)
             })
             .then((data) => res.send(data.quotes.reverse()))
             break;
