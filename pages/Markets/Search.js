@@ -27,6 +27,7 @@ export default function Search(props){
   const submitHandler = async ()=>{
     const data = await  fetch('/api/YahooApi', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ symbol: stockTickerText })
       })
       .then(res => res.json());
@@ -35,7 +36,8 @@ export default function Search(props){
 
     const yahooRawData = await fetch(`/api/YahooApi/StockHistory`,{
       method: 'POST',
-        body: JSON.stringify({ 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
         symbol: stockTickerText,
         from:getPastDate(-5),
         to:getTodaysDate(),

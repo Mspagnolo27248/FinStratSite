@@ -1,53 +1,38 @@
+import yahooFinance from './_yahooClient.js';
 
-var yahooFinance = require('yahoo-finance2').default;
+export default async function handler(req, res) {
+  const { method } = req;
 
-
-    export default async function handler(req, res) {
-        const { method } = req;
-      
-        switch (method) {
-          case 'GET':
-            // Handle GET request
-          
-            await yahooFinance.chart('SPY',{               
-                period1:'2018-01-01',
-                //period2:'2023-04-01',            
-            })
-            .then((data) => res.send(data.quotes))
-      
-
-
-            break;
-          case 'POST':
-            // Handle POST request
-            const bodyObject = JSON.parse(req.body);
-            const symbol = bodyObject.symbol;
-            const startDate = bodyObject.from;
-            const endDate = bodyObject.to;
-            const period = bodyObject.period;
-            await yahooFinance.chart(symbol,{                
-                period1:startDate,
-                period2:endDate,
-                interval:period // see the docs for the full list
-            })
-            .then((data) => res.send(data.quotes.reverse()))
-            break;
-          case 'PUT':
-            // Handle PUT request
-            res.status(200).json({ message: 'Handling PUT request' });
-            break;
-          case 'DELETE':
-            // Handle DELETE request
-            res.status(200).json({ message: 'Handling DELETE request' });
-            break;
-          default:
-            res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-            res.status(405).end(`Method ${method} Not Allowed`);
-        }
+  switch (method) {
+    case 'GET':
+      try {
+        const data = await yahooFinance.chart('SPY', { period1: '2018-01-01' });
+        res.send(data.quotes);
+      } catch (err) {
+        res.status(500).json({ error: err.message });
       }
-      
-
-
-
-
-
+      break;
+    case 'POST':
+      try {
+        const { symbol, from, to, period } = req.body;
+        const data = await yahooFinance.chart(symbol, {
+          period1: from,
+          period2: to,
+          interval: period,
+        });
+        res.send(data.quotes.reverse());
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+      break;
+    case 'PUT':
+      res.status(200).json({ message: 'Handling PUT request' });
+      break;
+    case 'DELETE':
+      res.status(200).json({ message: 'Handling DELETE request' });
+      break;
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+      res.status(405).end(`Method ${method} Not Allowed`);
+  }
+}

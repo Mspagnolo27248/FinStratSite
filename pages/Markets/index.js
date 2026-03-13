@@ -25,6 +25,7 @@ useEffect(() => {
           try {
             const response = await fetch(`/api/YahooApi`, {
               method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ symbol: item }),
             });
 

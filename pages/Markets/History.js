@@ -22,6 +22,7 @@ export default function History() {
 
     const data = await fetch("/api/YahooApi/StockHistory", {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         symbol: formData.ticker,
         from: formData.from,
